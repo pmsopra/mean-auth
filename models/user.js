@@ -43,3 +43,13 @@ module.exports.addUser = function (newUser, cb) {
         })
     })
 }
+
+module.exports.comparePassword = function (candidatePassword, hash, cb) {
+    bcrypt.compare(candidatePassword, hash, (err, isMatch) => {
+        if (err) {
+            throw err;
+        }
+
+        cb(null, isMatch)
+    });
+}
