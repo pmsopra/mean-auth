@@ -6,7 +6,7 @@ const passport = require('passport');
 const mongoose = require('mongoose');
 const config = require('./config/database');
 
-mongoose.connect(config.database);
+mongoose.connect(config.database, { useNewUrlParser: true });
 
 mongoose.connection.on('connected', () => {
     console.log('connected to database ' + config.database);
