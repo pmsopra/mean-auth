@@ -12,6 +12,10 @@ mongoose.connection.on('connected', () => {
     console.log('connected to database ' + config.database);
 })
 
+mongoose.connection.on('eror', (err) => {
+    console.log('Database error ' + err);
+})
+
 const app = express();
 const users = require('./routes/users');
 const port = 3000;
