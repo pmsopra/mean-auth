@@ -65,7 +65,7 @@ export class RegisterComponent implements OnInit {
         return;
       }
 
-      this.flashMessages.show('You are now registered :)', {
+      this.flashMessages.show('You are now registered :) You can log in.', {
         cssClass: 'alert-success',
         timeout: 3000,
       });
