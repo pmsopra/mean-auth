@@ -27,11 +27,31 @@ export class AuthService {
       .post('http://localhost:3000/users/authenticate', user, { headers });
   }
 
+  getProfile() {
+    this.loadToken();
+
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      Authorization: this.authToken
+    });
+
+
+    console.log(headers.get('Authorization'));
+
+    return this.http
+      .get('http://localhost:3000/users/profile', { headers });
+  }
+
   storeUserData(token: string, user) {
     localStorage.setItem('id_token', token);
     localStorage.setItem('user', JSON.stringify(user));
     this.authToken = token;
     this.user = user;
+  }
+
+  loadToken() {
+    const token = localStorage.getItem('id_token');
+    this.authToken = token;
   }
 
   logout() {
