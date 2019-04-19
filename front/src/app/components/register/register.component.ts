@@ -4,7 +4,7 @@ import { ValidateService } from '../../services/validate.service';
 import { AuthService } from '../../services/auth.service';
 import { FlashMessagesService } from 'angular2-flash-messages';
 
-interface response {
+interface Response {
   success: boolean;
   message: string;
 }
@@ -55,7 +55,7 @@ export class RegisterComponent implements OnInit {
     }
 
 
-    this.authService.registerUser(user).subscribe((data: response) => {
+    this.authService.registerUser(user).subscribe((data: Response) => {
       if (!data.success) {
         this.flashMessages.show('Something went wrong :(', {
           cssClass: 'alert-danger',
