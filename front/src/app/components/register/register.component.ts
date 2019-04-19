@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { ValidateService } from '../../services/validate.service';
 import { AuthService } from '../../services/auth.service';
@@ -14,7 +14,7 @@ interface Response {
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.scss']
 })
-export class RegisterComponent implements OnInit {
+export class RegisterComponent {
   name: string;
   username: string;
   email: string;
@@ -26,9 +26,6 @@ export class RegisterComponent implements OnInit {
     private authService: AuthService,
     private router: Router,
   ) { }
-
-  ngOnInit() {
-  }
 
   onRegisterSubmit() {
     const user = {
@@ -53,7 +50,6 @@ export class RegisterComponent implements OnInit {
       });
       return false;
     }
-
 
     this.authService.registerUser(user).subscribe((data: Response) => {
       if (!data.success) {
