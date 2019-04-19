@@ -35,9 +35,6 @@ export class AuthService {
       Authorization: this.authToken
     });
 
-
-    console.log(headers.get('Authorization'));
-
     return this.http
       .get('http://localhost:3000/users/profile', { headers });
   }
