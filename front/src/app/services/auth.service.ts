@@ -26,4 +26,11 @@ export class AuthService {
     return this.http
       .post('http://localhost:3000/users/authenticate', user, { headers });
   }
+
+  storeUserData(token: string, user) {
+    localStorage.setItem('id_token', token);
+    localStorage.setItem('user', JSON.stringify(user));
+    this.authToken = token;
+    this.user = user;
+  }
 }

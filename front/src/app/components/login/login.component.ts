@@ -4,9 +4,17 @@ import { ValidateService } from '../../services/validate.service';
 import { AuthService } from '../../services/auth.service';
 import { FlashMessagesService } from 'angular2-flash-messages';
 
+interface User {
+  _id: string;
+  name: string;
+  username: string;
+  email: string;
+}
 interface Response {
   success: boolean;
   message: string;
+  token?: string;
+  user?: User;
 }
 
 @Component({
@@ -35,7 +43,7 @@ export class LoginComponent {
     this.authService.authenticateUser(user).subscribe((res: Response) => {
       console.log(res);
       if (!res.success) {
-        this.flashMessages.show('Something went wrong :(', {
+        this.flashMessages.show(res.message, {
           cssClass: 'alert-danger',
           timeout: 3000,
         });
@@ -43,10 +51,14 @@ export class LoginComponent {
         return;
       }
 
+      this.authService.storeUserData(res.token, res.user);
+
       this.flashMessages.show('You are now logged in :)', {
         cssClass: 'alert-success',
         timeout: 3000,
       });
+
+      this.router.navigate(['/dashboard']);
     });
   }
 }
