@@ -51,8 +51,8 @@ export class RegisterComponent {
       return false;
     }
 
-    this.authService.registerUser(user).subscribe((data: Response) => {
-      if (!data.success) {
+    this.authService.registerUser(user).subscribe((res: Response) => {
+      if (!res.success) {
         this.flashMessages.show('Something went wrong :(', {
           cssClass: 'alert-danger',
           timeout: 3000,
@@ -65,6 +65,7 @@ export class RegisterComponent {
         cssClass: 'alert-success',
         timeout: 3000,
       });
+
       this.router.navigate(['/login']);
     });
   }

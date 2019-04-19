@@ -18,4 +18,12 @@ export class AuthService {
     return this.http
       .post('http://localhost:3000/users/register', user, { headers });
   }
+
+  authenticateUser(user) {
+    const headers = new HttpHeaders();
+    headers.append('Content-Type', 'application/json');
+
+    return this.http
+      .post('http://localhost:3000/users/authenticate', user, { headers });
+  }
 }
