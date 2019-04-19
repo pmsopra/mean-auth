@@ -28,7 +28,7 @@ import { ValidateService } from './services/validate.service';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    FlashMessagesModule
+    FlashMessagesModule.forRoot()
   ],
   providers: [ValidateService],
   bootstrap: [AppComponent]
