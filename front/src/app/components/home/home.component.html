@@ -1,3 +1,27 @@
-<p>
-  home works!
-</p>
+<div class="jumbotron text-center my-4">
+  <h1>MEAN App</h1>
+
+  <p class="lead">Welcome</p>
+  <p>
+    <a [routerLink]="['/register']" class="btn btn-primary m-1">Register</a>
+    <a [routerLink]="['/login']" class="btn btn-primary m-1">Login</a>
+  </p>
+</div>
+
+<div class="row">
+  <div class="col-md-4">
+    <h3>Express Backend</h3>
+    <p>A rock solid Node.js/Express server
+      using Mongoose to organize models and query the database.</p>
+  </div>
+  <div class="col-md-4">
+    <h3>Angular CLI</h3>
+    <p>Angular-CLI to generate components, services and more.
+      Local dev server easy compilation.</p>
+  </div>
+  <div class="col-md-4">
+    <h3>JWT Tokens</h3>
+    <p>Full featured authentication using JSON web tokens.
+      Login and store user data.</p>
+  </div>
+</div>
