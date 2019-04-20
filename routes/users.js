@@ -7,11 +7,13 @@ const config = require('../config/database');
 const User = require('../models/user');
 
 router.post('/register', (req, res, next) => {
-    let newUser = new User({
-        name: req.body.name,
-        email: req.body.email,
-        username: req.body.username,
-        password: req.body.password,
+    const { name, email, username, password } = req.body;
+
+    const newUser = new User({
+        name,
+        email,
+        username,
+        password,
     });
 
     User.addUser(newUser, (err, user) => {
